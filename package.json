@@ -4,7 +4,11 @@
   "description": "API Desenvolvida utilizando TS, Node, ES6, Postgres e Sequelize",
   "main": "server/server.ts",
   "scripts": {
-    "start": "./node_modules/.bin/ts-node ./server/server.ts",
+    "start": "cross-env NODE_ENV=development ./node_modules/.bin/ts-node ./server/server.ts",
+    "bld": "tsc -p .",
+    "builded": "cross-env NODE_ENV=development node ./build/server.js",
+    "unit-test": "cross-env NODE_ENV=test mocha --opts ./tests/unit/config/mocha.opts ./build/tests/unit/unit.test.js",
+    "integration-test": "cross-env NODE_ENV=test mocha --opts ./tests/integration/config/mocha.opts ./build/tests/integration/integration.test.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,14 +33,23 @@
     "http": "0.0.0",
     "morgan": "^1.9.1",
     "pg": "^7.8.2",
-    "sequelize-cli": "^5.4.0"
+    "sequelize-cli": "^5.4.0",
+    "typescript": "^3.3.3333"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
+    "@types/chai": "^4.1.7",
     "@types/express": "^4.16.1",
+    "@types/mocha": "^5.2.6",
     "@types/morgan": "^1.7.35",
     "@types/sequelize": "^4.27.41",
+    "@types/supertest": "^2.0.7",
+    "chai": "^4.2.0",
+    "cross-env": "^5.2.0",
+    "mocha": "^6.0.2",
     "sequelize": "^4.43.0",
+    "supertest": "^4.0.0",
+    "testdouble": "^3.11.0",
     "ts-node": "^8.0.3"
   }
 }
